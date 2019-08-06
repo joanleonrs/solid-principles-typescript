@@ -1,4 +1,5 @@
 ﻿class CreditCard {
+    
     private Code: String;
     private Expiration: Date;
     protected MonthlyCost: number;
@@ -23,15 +24,12 @@
 
 }
 
-
-
 class GoldCreditCard extends CreditCard {
 
     monthlyDiscount(): number {
         return this.MonthlyCost * 0.05;
     }
 }
-
 
 class SilverCreditCard extends CreditCard {
 
