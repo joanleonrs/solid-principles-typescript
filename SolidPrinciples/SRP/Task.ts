@@ -1,7 +1,9 @@
-﻿
+﻿import { Database } from "./Database";
+
 /*
-* THE  CLASS DOESN'T FOLLOW THE SRP PRINCIPLE
+* THE CLASS DOESN'T FOLLOW THE SRP PRINCIPLE (Commented Wrong Code)
 */
+
 //class Task {
 //    private db: Database;
 
@@ -20,15 +22,11 @@
 
 
 class Task {
-
-    constructor(private title: string, private deadline: Date) {
-    }
+    constructor(private title: string, private deadline: Date) {}
 
     getTitle() {
         return this.title + "(" + this.deadline + ")";
     }
-
-
 }
 
 

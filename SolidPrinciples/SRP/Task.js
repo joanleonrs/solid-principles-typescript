@@ -1,5 +1,8 @@
+"use strict";
+exports.__esModule = true;
+var Database_1 = require("./Database");
 /*
-* THE  CLASS DOESN'T FOLLOW THE SRP PRINCIPLE
+* THE CLASS DOESN'T FOLLOW THE SRP PRINCIPLE (Commented Wrong Code)
 */
 //class Task {
 //    private db: Database;
@@ -13,21 +16,22 @@
 //        this.db.tasks.save({ title: this.title, date: this.deadline });
 //    }
 //}
-class Task {
-    constructor(title, deadline) {
+var Task = /** @class */ (function () {
+    function Task(title, deadline) {
         this.title = title;
         this.deadline = deadline;
     }
-    getTitle() {
+    Task.prototype.getTitle = function () {
         return this.title + "(" + this.deadline + ")";
+    };
+    return Task;
+}());
+var TaskRepository = /** @class */ (function () {
+    function TaskRepository() {
+        this.db = Database_1.Database.connect("admin:password@fakedb", ["tasks"]);
     }
-}
-class TaskRepository {
-    constructor() {
-        this.db = Database.connect("admin:password@fakedb", ["tasks"]);
-    }
-    save(task) {
+    TaskRepository.prototype.save = function (task) {
         this.db.tasks.save(JSON.stringify(task));
-    }
-}
-//# sourceMappingURL=Task.js.map
+    };
+    return TaskRepository;
+}());

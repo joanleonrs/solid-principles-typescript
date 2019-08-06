@@ -1,16 +1,23 @@
-class Database {
-    constructor(connectionString, repository) {
+"use strict";
+exports.__esModule = true;
+var Database = /** @class */ (function () {
+    function Database(connectionString, repository) {
         this.connectionString = connectionString;
         this.repository = repository;
     }
-    static connect(connectionString, repository) {
+    Database.connect = function (connectionString, repository) {
         return new Database(connectionString, repository);
+    };
+    return Database;
+}());
+exports.Database = Database;
+var Entity = /** @class */ (function () {
+    function Entity() {
     }
-}
-class Entity {
-    save(jsonEntity) {
+    Entity.prototype.save = function (jsonEntity) {
         //SAVING DATA
         return true;
-    }
-}
-//# sourceMappingURL=Database.js.map
+    };
+    return Entity;
+}());
+exports.Entity = Entity;
