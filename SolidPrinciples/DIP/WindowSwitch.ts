@@ -1,5 +1,7 @@
 ﻿
-
+/*
+* THE FOLLOWING CLASS DOESN'T FOLLOW THE DIP PRINCIPLE (Commented Wrong Code)
+*/
 //class CarWindow {
 //    open() {
 //        //... 
@@ -30,14 +32,12 @@
 //}
 
 
-
-
-interface IWindow {
+export interface IWindow {
     open();
     close();
 }
 
-class CarWindow implements IWindow {
+export class CarWindow implements IWindow {
     open() {
         //...
     }
@@ -47,13 +47,10 @@ class CarWindow implements IWindow {
     }
 }
 
-
-class WindowSwitch {
+export class WindowSwitch {
     private isOn = false;
 
-    constructor(private window: IWindow) {
-
-    }
+    constructor(private window: IWindow) {}
 
     onPress() {
         if (this.isOn) {
