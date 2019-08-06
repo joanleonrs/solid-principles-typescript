@@ -1,11 +1,14 @@
-﻿//interface Printer {
+﻿/*
+* THE FOLLOWING INTERFACE DOESN'T FOLLOW THE ISP PRINCIPLE (Commented Wrong Code)
+*/
+// export interface Printer {
 //    copyDocument();
 //    printDocument(document: Document);
 //    stapleDocument(document: Document, tray: Number);
-//}
+// }
 
 
-//class SimplePrinter implements Printer {
+// export class SimplePrinter implements Printer {
 
 //    public copyDocument() {
 //        //...
@@ -19,30 +22,29 @@
 //        //...
 //    }
 
-//}
+// }
 
-interface Printer {
+export interface Printer {
     printDocument(document: Document);
 }
 
-
-interface Stapler {
+export interface Stapler {
     stapleDocument(document: Document, tray: number);
 }
 
-
-interface Copier {
+export interface Copier {
     copyDocument();
 }
 
-class SimplePrinter implements Printer {
+export class SimplePrinter implements Printer {
     public printDocument(document: Document) {
         //...
     }
 }
 
 
-class SuperPrinter implements Printer, Stapler, Copier {
+export class SuperPrinter implements Printer, Stapler, Copier {
+
     public copyDocument() {
         //...
     }
