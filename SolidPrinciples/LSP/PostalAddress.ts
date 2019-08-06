@@ -1,6 +1,6 @@
 ﻿
 
-abstract class PostalAddress {
+export abstract class PostalAddress {
     Addressee: string;
     Country: string
     PostalCode: string;
@@ -14,29 +14,24 @@ abstract class PostalAddress {
     abstract WriteAddress(): string;
 }
 
-class ItalyPostalAddress extends PostalAddress {
+export class ItalyPostalAddress extends PostalAddress {
     WriteAddress(): string {
         return "Formatted Address Italy" + this.City;
     }
 }
-class UKPostalAddress extends PostalAddress {
+export class UKPostalAddress extends PostalAddress {
     WriteAddress(): string {
         return "Formatted Address UK" + this.City;
     }
 }
-class USAPostalAddress extends PostalAddress {
+export class USAPostalAddress extends PostalAddress {
     WriteAddress(): string {
         return "Formatted Address USA" + this.City;
     }
 }
 
-
-class AddressWriter {
+export class AddressWriter {
     PrintPostalAddress(writer: PostalAddress): string {
         return writer.WriteAddress();
     }
 }
-
-
-var test = new AddressWriter();
-test.PrintPostalAddress(new ItalyPostalAddress);
