@@ -1,0 +1,3 @@
+﻿# solid-principles-typescript
+
+

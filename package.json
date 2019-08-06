@@ -1,0 +1,9 @@
+{
+  "name": "solid-principles-typescript",
+  "version": "0.0.0",
+  "description": "SOLID principles using Typescript.",
+  "main": "app.js",
+  "author": {
+    "name": "jleon"
+  }
+}
