@@ -127,3 +127,25 @@ Configuración específica para las implementaciones de la interface IOAuth2Conf
 | client_secret | Clave secreta proporcionada por el servidor de autorización | STRING (opcional) |
 | requestType | Tipo de petición enviada al servidor | ENUM EResponseType (Form URL Encoded) |
 | responseType | Tipo de respuesta enviada del servidor | ENUM EResponseType (JSON) |
+
+## ¿Cómo agregar un nuevo autorizador dentro de Auth Manager?
+
+
+En caso sea necesario agregar un nuevo proveedor de autenticación debe de seguir los siguientes pasos:
+
+  1.Debe moverse hasta la carpeta "auth" ubicada dentro del directorio "src".
+  2.Una vez ubicado debe acceder a la carpeta "auth-types" y crear un nuevo directorio con el nombre del proveedor de autenticación que desee agregar.
+    Ejemplo: aws
+  3.Acceder al nuevo directorio creado y proceder con la creación de un fichero typescript que extienda de la clase abstracta "AuthenticationManager".
+  4.A continuación será necesario que sobre-escriba el método "authenticate", de acuerdo a las necesidades de su proveedor de autenticación (puede tomar como ejemplo la implementación de Grant Type Password para Oauth2 en el archivo "password.ts"). Adicionalmente puede sobre-escribir los demás métodos de la interface "IAuthentication".
+  5.Como el método "authenticate" requiere que se envíe como parámetro un objeto de tipo "TAuthRequest", debe adicionar una nueva interface que posea los atributos necesarios para la autenticación.
+  6.Para ello, dirigirse al archivo "interfaces.ts" ubicado en el directorio /src/auth/global/.
+  7.Editar el archivo agregando lo siguiente: Una nueva interface Request (tome como ejemplo la interface "IPasswordGrantRequest"), además debe adicionar la nueva interface al tipo "TAuthRequest".
+  8.A todo ello, es necesario editar el archivo "authentication.factory.ts" ubicado en el directorio /src/auth/.
+  9.Dentro de "AuthenticationFactory" debe editar el constructor y agregar un nuevo Case correspondiente al nuevo autorizador.
+  10.Debe también crear una nueva función privada para realizar la configuración del nuevo autorizador (puede tomar como ejemplo la función "configureOAuth2").
+  11.Para la implementación recomendamos, utilizar Patrones de Diseño según corresponda.
+  Puede guiarse de las implementaciones existentes, o sugerir nuevas. Mayor información en: https://refactoring.guru/design-patterns
+11.Para garantizar la funcionalidad del desarrollo realizado:
+  a.Utilizamos el archivo test.ts para realizar una prueba directo sin framework.
+  b.Utilizamos la carpeta demo para realizar una prueba con el framework Angular.
